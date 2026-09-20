@@ -9,6 +9,26 @@
 
   <script type="module" crossorigin src="./assets/index-Pu8CiVAU.js"></script>
   <link rel="stylesheet" crossorigin href="./assets/index-CpMKxJ57.css">
+  <style>
+    /* 功能模块「图集 + 图文说明」（同源改动见 src/website/src/style.css） */
+    .mod-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(112px, 1fr)); gap: 14px; margin: 18px 0 26px; }
+    .mod-card { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 14px 10px; background: var(--card); border: 1px solid var(--card-border); border-radius: 16px; text-decoration: none; color: inherit; transition: transform .15s ease, box-shadow .15s ease; }
+    .mod-card:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(44,107,74,.14); }
+    .mod-thumb { position: relative; width: 100%; aspect-ratio: 16/10; border-radius: 10px; overflow: hidden; background: linear-gradient(135deg,#eef4ea,#dcebe0); display: flex; align-items: center; justify-content: center; }
+    .mod-thumb img.shot { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .mod-thumb .ph, .shot-media .ph { display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 30px; line-height: 1.25; color: var(--green-deep); text-align: center; }
+    .mod-thumb .ph small, .shot-media .ph small { display: block; margin-top: 4px; font-size: 11px; color: #6b7d6f; }
+    .mod-name { font-size: 13px; font-weight: 600; color: var(--green-deep); text-align: center; }
+    .shot-figure { margin: 14px 0 4px; }
+    .shot-media { position: relative; border-radius: 14px; overflow: hidden; border: 1px solid var(--card-border); background: linear-gradient(135deg,#eef4ea,#dcebe0); min-height: 170px; display: flex; align-items: center; justify-content: center; }
+    .shot-media img.shot { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .shot-figure figcaption { margin-top: 8px; font-size: 13px; color: #5d6b60; text-align: center; }
+    .shot-lightbox { position: fixed; inset: 0; background: rgba(18,28,22,.88); display: flex; align-items: center; justify-content: center; z-index: 9999; padding: 24px; }
+    .shot-lightbox[hidden] { display: none; }
+    .shot-lightbox .lb-img { max-width: 92vw; max-height: 86vh; border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,.5); }
+    .shot-lightbox .lb-cap { position: absolute; bottom: 20px; left: 0; right: 0; text-align: center; color: #eaf3ec; font-size: 14px; }
+    .shot-lightbox .lb-close { position: absolute; top: 16px; right: 22px; font-size: 28px; line-height: 1; color: #fff; background: none; border: none; cursor: pointer; }
+  </style>
 </head>
 <body>
   <!-- 背景氛围：有机光斑 + 漂浮叶片 -->
@@ -421,15 +441,165 @@
           <article id="doc-modules-detail" class="doc-card glass reveal">
             <h3>12. 功能模块详解</h3>
             <p class="section-sub reveal">以下 20 个模块覆盖生活的方方面面，全部数据本地存储，按需在「设置 → 功能模块」中启用。</p>
-            <div class="module-detail">
+            <div class="mod-gallery">
+              <a class="mod-card" href="#mod-home">
+                <span class="mod-thumb">
+                  <span class="ph">🏠<br><small>截图待补充</small></span>
+                  <img class="shot" src="img/mod-home.png" alt="今日 · 生活仪表盘 截图" loading="lazy" onerror="this.remove()">
+                </span>
+                <span class="mod-name">今日 · 生活仪表盘</span>
+              </a>
+              <a class="mod-card" href="#mod-travel">
+                <span class="mod-thumb">
+                  <span class="ph">🗺️<br><small>截图待补充</small></span>
+                  <img class="shot" src="img/mod-travel.png" alt="旅行 截图" loading="lazy" onerror="this.remove()">
+                </span>
+                <span class="mod-name">旅行</span>
+              </a>
+              <a class="mod-card" href="#mod-todo">
+                <span class="mod-thumb">
+                  <span class="ph">📋<br><small>截图待补充</small></span>
+                  <img class="shot" src="img/mod-todo.png" alt="待办 截图" loading="lazy" onerror="this.remove()">
+                </span>
+                <span class="mod-name">待办</span>
+              </a>
+              <a class="mod-card" href="#mod-calendar">
+                <span class="mod-thumb">
+                  <span class="ph">📅<br><small>截图待补充</small></span>
+                  <img class="shot" src="img/mod-calendar.png" alt="日历 截图" loading="lazy" onerror="this.remove()">
+                </span>
+                <span class="mod-name">日历</span>
+              </a>
+              <a class="mod-card" href="#mod-timer">
+                <span class="mod-thumb">
+                  <span class="ph">⏰<br><small>截图待补充</small></span>
+                  <img class="shot" src="img/mod-timer.png" alt="定时 截图" loading="lazy" onerror="this.remove()">
+                </span>
+                <span class="mod-name">定时</span>
+              </a>
+              <a class="mod-card" href="#mod-plan">
+                <span class="mod-thumb">
+                  <span class="ph">🎯<br><small>截图待补充</small></span>
+                  <img class="shot" src="img/mod-plan.png" alt="规划 截图" loading="lazy" onerror="this.remove()">
+                </span>
+                <span class="mod-name">规划</span>
+              </a>
+              <a class="mod-card" href="#mod-courses">
+                <span class="mod-thumb">
+                  <span class="ph">🎓<br><small>截图待补充</small></span>
+                  <img class="shot" src="img/mod-courses.png" alt="课程表 截图" loading="lazy" onerror="this.remove()">
+                </span>
+                <span class="mod-name">课程表</span>
+              </a>
+              <a class="mod-card" href="#mod-diary">
+                <span class="mod-thumb">
+                  <span class="ph">📖<br><small>截图待补充</small></span>
+                  <img class="shot" src="img/mod-diary.png" alt="日记 截图" loading="lazy" onerror="this.remove()">
+                </span>
+                <span class="mod-name">日记</span>
+              </a>
+              <a class="mod-card" href="#mod-finance">
+                <span class="mod-thumb">
+                  <span class="ph">💰<br><small>截图待补充</small></span>
+                  <img class="shot" src="img/mod-finance.png" alt="记账 截图" loading="lazy" onerror="this.remove()">
+                </span>
+                <span class="mod-name">记账</span>
+              </a>
+              <a class="mod-card" href="#mod-books">
+                <span class="mod-thumb">
+                  <span class="ph">📚<br><small>截图待补充</small></span>
+                  <img class="shot" src="img/mod-books.png" alt="读书 截图" loading="lazy" onerror="this.remove()">
+                </span>
+                <span class="mod-name">读书</span>
+              </a>
+              <a class="mod-card" href="#mod-knowledge">
+                <span class="mod-thumb">
+                  <span class="ph">🧠<br><small>截图待补充</small></span>
+                  <img class="shot" src="img/mod-knowledge.png" alt="知识库 截图" loading="lazy" onerror="this.remove()">
+                </span>
+                <span class="mod-name">知识库</span>
+              </a>
+              <a class="mod-card" href="#mod-notes">
+                <span class="mod-thumb">
+                  <span class="ph">📝<br><small>截图待补充</small></span>
+                  <img class="shot" src="img/mod-notes.png" alt="便签 截图" loading="lazy" onerror="this.remove()">
+                </span>
+                <span class="mod-name">便签</span>
+              </a>
+              <a class="mod-card" href="#mod-habit">
+                <span class="mod-thumb">
+                  <span class="ph">✅<br><small>截图待补充</small></span>
+                  <img class="shot" src="img/mod-habit.png" alt="习惯 截图" loading="lazy" onerror="this.remove()">
+                </span>
+                <span class="mod-name">习惯</span>
+              </a>
+              <a class="mod-card" href="#mod-album">
+                <span class="mod-thumb">
+                  <span class="ph">🖼️<br><small>截图待补充</small></span>
+                  <img class="shot" src="img/mod-album.png" alt="相册 截图" loading="lazy" onerror="this.remove()">
+                </span>
+                <span class="mod-name">相册</span>
+              </a>
+              <a class="mod-card" href="#mod-quickops">
+                <span class="mod-thumb">
+                  <span class="ph">🚀<br><small>截图待补充</small></span>
+                  <img class="shot" src="img/mod-quickops.png" alt="快捷操作 截图" loading="lazy" onerror="this.remove()">
+                </span>
+                <span class="mod-name">快捷操作</span>
+              </a>
+              <a class="mod-card" href="#mod-tools">
+                <span class="mod-thumb">
+                  <span class="ph">🧰<br><small>截图待补充</small></span>
+                  <img class="shot" src="img/mod-tools.png" alt="工具 截图" loading="lazy" onerror="this.remove()">
+                </span>
+                <span class="mod-name">工具</span>
+              </a>
+              <a class="mod-card" href="#mod-vault">
+                <span class="mod-thumb">
+                  <span class="ph">🔐<br><small>截图待补充</small></span>
+                  <img class="shot" src="img/mod-vault.png" alt="密码库 截图" loading="lazy" onerror="this.remove()">
+                </span>
+                <span class="mod-name">密码库</span>
+              </a>
+              <a class="mod-card" href="#mod-clipboard">
+                <span class="mod-thumb">
+                  <span class="ph">📋<br><small>截图待补充</small></span>
+                  <img class="shot" src="img/mod-clipboard.png" alt="剪贴板 截图" loading="lazy" onerror="this.remove()">
+                </span>
+                <span class="mod-name">剪贴板</span>
+              </a>
+              <a class="mod-card" href="#mod-screenshot">
+                <span class="mod-thumb">
+                  <span class="ph">📷<br><small>截图待补充</small></span>
+                  <img class="shot" src="img/mod-screenshot.png" alt="截图 截图" loading="lazy" onerror="this.remove()">
+                </span>
+                <span class="mod-name">截图</span>
+              </a>
+              <a class="mod-card" href="#mod-relax">
+                <span class="mod-thumb">
+                  <span class="ph">🐟<br><small>截图待补充</small></span>
+                  <img class="shot" src="img/mod-relax.png" alt="摸鱼 截图" loading="lazy" onerror="this.remove()">
+                </span>
+                <span class="mod-name">摸鱼</span>
+              </a>
+            </div>
+            <div class="module-detail" id="mod-home">
               <h4>🏠 今日 · 生活仪表盘</h4>
               <ul>
                 <li>由一套<b>可拖拽、可缩放的 widget 网格</b>组成（6 列，卡片可跨 1~6 列、1~3 行），一眼掌握今日全貌。</li>
                 <li>内置 16 个 widget：问候、待办统计、今日心情、本月支出、正在阅读、时钟、今日习惯、最近日记、近期支出、快捷操作、迷你日历、天气、快速启动、今日头条、那年今日、本周周报。</li>
                 <li>支持「自定义布局」：拖动排序、调宽调高、<b>隐藏</b>卡片；布局按<b>生活 / 工作两种模式分别保存</b>。</li>
               </ul>
+            
+            <figure class="shot-figure">
+              <div class="shot-media">
+                <span class="ph"><b>🏠 今日 · 生活仪表盘</b>截图待补充</span>
+                <img class="shot" src="img/mod-home.png" alt="🏠 今日 · 生活仪表盘 模块界面截图" loading="lazy" onerror="this.remove()">
+              </div>
+              <figcaption>🏠 今日 · 生活仪表盘 — 界面一览（放入对应截图后自动显示）</figcaption>
+            </figure>
             </div>
-            <div class="module-detail">
+            <div class="module-detail" id="mod-travel">
               <h4>🗺️ 旅行</h4>
               <ul>
                 <li>新建行程（标题 / 目的地 / 出发与返程日期 / 预算），行程有三态：计划中 / 进行中 / 已完成。</li>
@@ -437,8 +607,16 @@
                 <li><b>预算进度</b>实时估算门票花销，并可一键「记一笔」联动记账模块。</li>
                 <li>行程可<b>导出为可打印 / PDF 页面</b>；带坐标的景点会绘制离线地图点位示意图。</li>
               </ul>
+            
+            <figure class="shot-figure">
+              <div class="shot-media">
+                <span class="ph"><b>🗺️ 旅行</b>截图待补充</span>
+                <img class="shot" src="img/mod-travel.png" alt="🗺️ 旅行 模块界面截图" loading="lazy" onerror="this.remove()">
+              </div>
+              <figcaption>🗺️ 旅行 — 界面一览（放入对应截图后自动显示）</figcaption>
+            </figure>
             </div>
-            <div class="module-detail">
+            <div class="module-detail" id="mod-todo">
               <h4>📋 待办</h4>
               <ul>
                 <li>自定义<b>分类</b>侧栏（默认 8 类，可增删），多视图：今天 / 时间线 / 明天 / 本周 / 全部 / 已完成，并显示计数。</li>
@@ -446,8 +624,16 @@
                 <li>时间线视图高亮未来 1 小时内任务；右侧「今日总览」含完成进度环、逾期列表、近 7 天完成趋势、分类分布。</li>
                 <li>拖拽排序、删除有 5 秒撤销；每条可<b>一键开始 25 分钟专注番茄钟</b>。</li>
               </ul>
+            
+            <figure class="shot-figure">
+              <div class="shot-media">
+                <span class="ph"><b>📋 待办</b>截图待补充</span>
+                <img class="shot" src="img/mod-todo.png" alt="📋 待办 模块界面截图" loading="lazy" onerror="this.remove()">
+              </div>
+              <figcaption>📋 待办 — 界面一览（放入对应截图后自动显示）</figcaption>
+            </figure>
             </div>
-            <div class="module-detail">
+            <div class="module-detail" id="mod-calendar">
               <h4>📅 日历</h4>
               <ul>
                 <li>月历网格（周一起始），聚合三类圆点：纪念日 / 生日、待办日程、课程。</li>
@@ -455,24 +641,48 @@
                 <li>可添加纪念日 / 生日 / 自定义，每年重复，自动算「第 N 周年 / N 岁」。</li>
                 <li>当日详情聚合：节假日、用户事件、当天待办（可勾选）、当天课程（学期内才显示）。</li>
               </ul>
+            
+            <figure class="shot-figure">
+              <div class="shot-media">
+                <span class="ph"><b>📅 日历</b>截图待补充</span>
+                <img class="shot" src="img/mod-calendar.png" alt="📅 日历 模块界面截图" loading="lazy" onerror="this.remove()">
+              </div>
+              <figcaption>📅 日历 — 界面一览（放入对应截图后自动显示）</figcaption>
+            </figure>
             </div>
-            <div class="module-detail">
+            <div class="module-detail" id="mod-timer">
               <h4>⏰ 定时</h4>
               <ul>
                 <li>左栏「健康定时任务」：5 个预设（喝水 / 护眼 / 起身 / 上厕所 / 吃药）一键添加，也可自定义名称 + 间隔。</li>
                 <li>可设<b>间隔</b>（15 分~8 小时）、<b>活跃时段</b>、<b>星期</b>多选。</li>
                 <li>右栏「闹钟」：精确到分、可备注、支持按星期重复或每天 / 工作日。</li>
               </ul>
+            
+            <figure class="shot-figure">
+              <div class="shot-media">
+                <span class="ph"><b>⏰ 定时</b>截图待补充</span>
+                <img class="shot" src="img/mod-timer.png" alt="⏰ 定时 模块界面截图" loading="lazy" onerror="this.remove()">
+              </div>
+              <figcaption>⏰ 定时 — 界面一览（放入对应截图后自动显示）</figcaption>
+            </figure>
             </div>
-            <div class="module-detail">
+            <div class="module-detail" id="mod-plan">
               <h4>🎯 规划</h4>
               <ul>
                 <li>两个页签：<b>年度目标</b>与<b>心愿清单</b>。</li>
                 <li>年度目标按年份切换，可拆<b>里程碑</b>（截止日期、完成勾选、逾期高亮，进度按完成比例计算）。</li>
                 <li>目标有主题色轮换；删除带撤销（含里程碑快照）。</li>
               </ul>
+            
+            <figure class="shot-figure">
+              <div class="shot-media">
+                <span class="ph"><b>🎯 规划</b>截图待补充</span>
+                <img class="shot" src="img/mod-plan.png" alt="🎯 规划 模块界面截图" loading="lazy" onerror="this.remove()">
+              </div>
+              <figcaption>🎯 规划 — 界面一览（放入对应截图后自动显示）</figcaption>
+            </figure>
             </div>
-            <div class="module-detail">
+            <div class="module-detail" id="mod-courses">
               <h4>🎓 课程表</h4>
               <ul>
                 <li>学期设置：开学日期（自动算当前周次）、总周数、每日节数、每周天数（1~7）。</li>
@@ -480,8 +690,16 @@
                 <li>单门课字段：名称、教师、地点、开始~结束节次（跨节合并）、颜色、备注。</li>
                 <li>周次导航（上 / 下一周 / 本周），空格子点击快速建课。</li>
               </ul>
+            
+            <figure class="shot-figure">
+              <div class="shot-media">
+                <span class="ph"><b>🎓 课程表</b>截图待补充</span>
+                <img class="shot" src="img/mod-courses.png" alt="🎓 课程表 模块界面截图" loading="lazy" onerror="this.remove()">
+              </div>
+              <figcaption>🎓 课程表 — 界面一览（放入对应截图后自动显示）</figcaption>
+            </figure>
             </div>
-            <div class="module-detail">
+            <div class="module-detail" id="mod-diary">
               <h4>📖 日记</h4>
               <ul>
                 <li>左侧筛选：搜索、7 种心情筛选、标签筛选，以及总篇数 / 本月 / 最多心情统计。</li>
@@ -489,8 +707,16 @@
                 <li>列表按日期分组，可展开全文、编辑、删除（入 30 天回收站）。</li>
                 <li>顶部「心情」页签内嵌完整<b>心情模块</b>（记录每日心情、查看心情趋势）。</li>
               </ul>
+            
+            <figure class="shot-figure">
+              <div class="shot-media">
+                <span class="ph"><b>📖 日记</b>截图待补充</span>
+                <img class="shot" src="img/mod-diary.png" alt="📖 日记 模块界面截图" loading="lazy" onerror="this.remove()">
+              </div>
+              <figcaption>📖 日记 — 界面一览（放入对应截图后自动显示）</figcaption>
+            </figure>
             </div>
-            <div class="module-detail">
+            <div class="module-detail" id="mod-finance">
               <h4>💰 记账</h4>
               <ul>
                 <li>三张汇总卡：本月收入 / 支出 / 净额（含储蓄率），对比上月显示涨跌趋势。</li>
@@ -498,8 +724,16 @@
                 <li><b>按分类月度预算</b>：超 80% 警告、超支报警，并列出预警文案。</li>
                 <li><b>统计图表</b>：本月支出分类饼图 + 近 6 个月收支柱状图（ECharts）。</li>
               </ul>
+            
+            <figure class="shot-figure">
+              <div class="shot-media">
+                <span class="ph"><b>💰 记账</b>截图待补充</span>
+                <img class="shot" src="img/mod-finance.png" alt="💰 记账 模块界面截图" loading="lazy" onerror="this.remove()">
+              </div>
+              <figcaption>💰 记账 — 界面一览（放入对应截图后自动显示）</figcaption>
+            </figure>
             </div>
-            <div class="module-detail">
+            <div class="module-detail" id="mod-books">
               <h4>📚 读书</h4>
               <ul>
                 <li>统计：正在阅读 / 今年读完 / 全部 / 年度目标进度（默认 24 本）。</li>
@@ -507,8 +741,16 @@
                 <li>卡片显示封面、阅读进度条、1~5 星评分、快捷状态切换。</li>
                 <li>详情弹窗可编辑全部字段、进度、评分、书评笔记、精彩摘录（多条）。</li>
               </ul>
+            
+            <figure class="shot-figure">
+              <div class="shot-media">
+                <span class="ph"><b>📚 读书</b>截图待补充</span>
+                <img class="shot" src="img/mod-books.png" alt="📚 读书 模块界面截图" loading="lazy" onerror="this.remove()">
+              </div>
+              <figcaption>📚 读书 — 界面一览（放入对应截图后自动显示）</figcaption>
+            </figure>
             </div>
-            <div class="module-detail">
+            <div class="module-detail" id="mod-knowledge">
               <h4>🧠 知识库</h4>
               <ul>
                 <li>左侧搜索、分类筛选、标签筛选。</li>
@@ -516,16 +758,32 @@
                 <li>条目字段：标题、分类、标签、正文；支持<b>置顶</b>、网格 / 列表双视图。</li>
                 <li>删除入 30 天回收站。</li>
               </ul>
+            
+            <figure class="shot-figure">
+              <div class="shot-media">
+                <span class="ph"><b>🧠 知识库</b>截图待补充</span>
+                <img class="shot" src="img/mod-knowledge.png" alt="🧠 知识库 模块界面截图" loading="lazy" onerror="this.remove()">
+              </div>
+              <figcaption>🧠 知识库 — 界面一览（放入对应截图后自动显示）</figcaption>
+            </figure>
             </div>
-            <div class="module-detail">
+            <div class="module-detail" id="mod-notes">
               <h4>📝 便签</h4>
               <ul>
                 <li>两种位置：内置（悬浮应用所有页面之上）与桌面（独立小窗常驻桌面）。</li>
                 <li>内置便签可拖动位置、右下角拖拽改大小、正文自动保存。</li>
                 <li>多颜色随主题深浅换肤；一键「发到桌面 / 收回内置 / 删除」。</li>
               </ul>
+            
+            <figure class="shot-figure">
+              <div class="shot-media">
+                <span class="ph"><b>📝 便签</b>截图待补充</span>
+                <img class="shot" src="img/mod-notes.png" alt="📝 便签 模块界面截图" loading="lazy" onerror="this.remove()">
+              </div>
+              <figcaption>📝 便签 — 界面一览（放入对应截图后自动显示）</figcaption>
+            </figure>
             </div>
-            <div class="module-detail">
+            <div class="module-detail" id="mod-habit">
               <h4>✅ 习惯</h4>
               <ul>
                 <li>新增习惯可设图标（12 emoji + 自定义）、颜色、频率（每天 / 每周）、每周目标次数、提醒时间。</li>
@@ -533,8 +791,16 @@
                 <li><b>每周概览</b>矩阵（习惯 × 7 天打卡格）。</li>
                 <li>详情统计：总完成次数、当前连续、最长连续、近 30 天完成率。</li>
               </ul>
+            
+            <figure class="shot-figure">
+              <div class="shot-media">
+                <span class="ph"><b>✅ 习惯</b>截图待补充</span>
+                <img class="shot" src="img/mod-habit.png" alt="✅ 习惯 模块界面截图" loading="lazy" onerror="this.remove()">
+              </div>
+              <figcaption>✅ 习惯 — 界面一览（放入对应截图后自动显示）</figcaption>
+            </figure>
             </div>
-            <div class="module-detail">
+            <div class="module-detail" id="mod-album">
               <h4>🖼️ 相册</h4>
               <ul>
                 <li>两种视图：时间线（按月份分组）与相册（自建相册含封面与张数）。</li>
@@ -542,8 +808,16 @@
                 <li>单张灯箱：左右切换、编辑标题 / 日期 / 标签、删除（软删入回收站）。</li>
                 <li>标签搜索；<b>沉浸影院</b>全屏播放。</li>
               </ul>
+            
+            <figure class="shot-figure">
+              <div class="shot-media">
+                <span class="ph"><b>🖼️ 相册</b>截图待补充</span>
+                <img class="shot" src="img/mod-album.png" alt="🖼️ 相册 模块界面截图" loading="lazy" onerror="this.remove()">
+              </div>
+              <figcaption>🖼️ 相册 — 界面一览（放入对应截图后自动显示）</figcaption>
+            </figure>
             </div>
-            <div class="module-detail">
+            <div class="module-detail" id="mod-quickops">
               <h4>🚀 快捷操作</h4>
               <ul>
                 <li>管理 4 类条目：项目、文件夹、程序、连接（网页）。</li>
@@ -551,16 +825,32 @@
                 <li>分组按类别隔离；删分组后条目转入「未分组」。</li>
                 <li><b>最近启动 Top5</b> 与每条<b>使用次数</b>统计；支持 JSON 导入 / 导出。</li>
               </ul>
+            
+            <figure class="shot-figure">
+              <div class="shot-media">
+                <span class="ph"><b>🚀 快捷操作</b>截图待补充</span>
+                <img class="shot" src="img/mod-quickops.png" alt="🚀 快捷操作 模块界面截图" loading="lazy" onerror="this.remove()">
+              </div>
+              <figcaption>🚀 快捷操作 — 界面一览（放入对应截图后自动显示）</figcaption>
+            </figure>
             </div>
-            <div class="module-detail">
+            <div class="module-detail" id="mod-tools">
               <h4>🧰 工具</h4>
               <ul>
                 <li>共 <b>33 个工具</b>，分 6 组：编码转换、文本处理、单位 / 进制、开发辅助、生活常用、安全隐私。</li>
                 <li>覆盖：十六进制解码、Base64、URL、大小写、字数统计、JSON、颜色、哈希、UUID、正则、Cron、JWT、SQL、折扣、房贷、税后工资、复利、分账、BMI、日期计算、世界时钟、农历、随机、密码生成、信息脱敏等。</li>
                 <li>工具以懒加载组件内联打开，左侧分组导航 + 搜索。</li>
               </ul>
+            
+            <figure class="shot-figure">
+              <div class="shot-media">
+                <span class="ph"><b>🧰 工具</b>截图待补充</span>
+                <img class="shot" src="img/mod-tools.png" alt="🧰 工具 模块界面截图" loading="lazy" onerror="this.remove()">
+              </div>
+              <figcaption>🧰 工具 — 界面一览（放入对应截图后自动显示）</figcaption>
+            </figure>
             </div>
-            <div class="module-detail">
+            <div class="module-detail" id="mod-vault">
               <h4>🔐 密码库</h4>
               <ul>
                 <li><b>主密码</b>机制（首次设置 ≥6 位，密钥仅留内存不存储）。</li>
@@ -569,8 +859,16 @@
                 <li>复制用户名 / 密码 / 网址一键复制，密码复制<b>不进剪贴板历史</b>；可设复制后 N 秒自动清空剪贴板。</li>
                 <li>内置<b>密码生成器</b>（长度 8~64、大小写 / 数字 / 符号 / 排除易混淆）+ 修改主密码（全量重加密）。</li>
               </ul>
+            
+            <figure class="shot-figure">
+              <div class="shot-media">
+                <span class="ph"><b>🔐 密码库</b>截图待补充</span>
+                <img class="shot" src="img/mod-vault.png" alt="🔐 密码库 模块界面截图" loading="lazy" onerror="this.remove()">
+              </div>
+              <figcaption>🔐 密码库 — 界面一览（放入对应截图后自动显示）</figcaption>
+            </figure>
             </div>
-            <div class="module-detail">
+            <div class="module-detail" id="mod-clipboard">
               <h4>📋 剪贴板</h4>
               <ul>
                 <li>全局快捷键呼出快速面板，复制文本约 1 秒内自动入库。</li>
@@ -578,8 +876,16 @@
                 <li>搜索、置顶、回贴、删除。</li>
                 <li>设置：采集开关、<b>敏感内容过滤</b>（跳过疑似私钥 / Token / 密码）、快速面板自动粘贴、<b>容量上限 100~2000 条</b>。</li>
               </ul>
+            
+            <figure class="shot-figure">
+              <div class="shot-media">
+                <span class="ph"><b>📋 剪贴板</b>截图待补充</span>
+                <img class="shot" src="img/mod-clipboard.png" alt="📋 剪贴板 模块界面截图" loading="lazy" onerror="this.remove()">
+              </div>
+              <figcaption>📋 剪贴板 — 界面一览（放入对应截图后自动显示）</figcaption>
+            </figure>
             </div>
-            <div class="module-detail">
+            <div class="module-detail" id="mod-screenshot">
               <h4>📷 截图</h4>
               <ul>
                 <li>全局快捷键<b>选区截图</b>，另有<b>长截图</b>快捷键；可设截后自动复制、截后进标注编辑器。</li>
@@ -587,14 +893,30 @@
                 <li>网格浏览（缩略图懒加载），每条可<b>钉在桌面</b>（独立浮窗）、复制、删除、加备注搜索。</li>
                 <li>多选批量删除；大图预览可拖动 / 缩放（20%~800%）/ 平移。</li>
               </ul>
+            
+            <figure class="shot-figure">
+              <div class="shot-media">
+                <span class="ph"><b>📷 截图</b>截图待补充</span>
+                <img class="shot" src="img/mod-screenshot.png" alt="📷 截图 模块界面截图" loading="lazy" onerror="this.remove()">
+              </div>
+              <figcaption>📷 截图 — 界面一览（放入对应截图后自动显示）</figcaption>
+            </figure>
             </div>
-            <div class="module-detail">
+            <div class="module-detail" id="mod-relax">
               <h4>🐟 摸鱼</h4>
               <ul>
                 <li><b>6 款小游戏</b>：贪吃蛇、俄罗斯方块、2048、扫雷、打砖块、记忆翻牌。</li>
                 <li>游戏内联懒加载，支持键盘 + 屏幕按钮。</li>
                 <li>音频控制：音效开关、背景音开关、音量滑杆（背景音仅游戏时播放）。</li>
               </ul>
+            
+            <figure class="shot-figure">
+              <div class="shot-media">
+                <span class="ph"><b>🐟 摸鱼</b>截图待补充</span>
+                <img class="shot" src="img/mod-relax.png" alt="🐟 摸鱼 模块界面截图" loading="lazy" onerror="this.remove()">
+              </div>
+              <figcaption>🐟 摸鱼 — 界面一览（放入对应截图后自动显示）</figcaption>
+            </figure>
             </div>
           </article>
         </div>
@@ -639,5 +961,29 @@
   </footer>
 
 
-</body>
+    <!-- 功能模块截图灯箱 -->
+    <div id="shot-lightbox" class="shot-lightbox" hidden>
+      <button class="lb-close" type="button" aria-label="关闭">×</button>
+      <img class="lb-img" alt="">
+      <p class="lb-cap"></p>
+    </div>
+    <script>
+      (function () {
+        var lb = document.getElementById('shot-lightbox');
+        if (!lb) return;
+        var lbImg = lb.querySelector('.lb-img');
+        var lbCap = lb.querySelector('.lb-cap');
+        function open(src, cap) { lbImg.src = src; lbCap.textContent = cap || ''; lb.hidden = false; }
+        function close() { lb.hidden = true; lbImg.src = ''; }
+        document.querySelectorAll('.shot-media img.shot, .mod-thumb img.shot').forEach(function (img) {
+          img.addEventListener('click', function (e) {
+            e.preventDefault(); e.stopPropagation();
+            if (img.complete && img.naturalWidth > 0) open(img.currentSrc || img.src, img.alt);
+          });
+        });
+        lb.addEventListener('click', function (e) { if (e.target !== lbImg) close(); });
+        document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+      })();
+    </script>
+  </body>
 </html>
